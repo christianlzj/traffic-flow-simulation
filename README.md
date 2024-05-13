@@ -1,11 +1,11 @@
 # Traffic Flow
 The goal is to model the behavior of freeway traffic, outlined in Chapter 8.2 of "Modeling and Simulation: An Application Oriented Approach" by Bungartz et al. (2014). The algorithm updates the state of each vehicle $i$ in three steps, outlined as follows:
-1. **Accelerate**: $v_i := min\{v_i+1,\, v_{max}\}$
+1. **Accelerate**: $v_i := min(v_i+1,\, v_{max})$
 2. **Decelerate**: $v_i := d(i,\,i+1)$, if $v_i>d(i,\,i+1)$
 3. **Move**: vehicle $i$ moves $v_i$ cells forward
 
 In order to more realistically model driver behavior, we also experiment with implementing a random dally factor between the deceleration and move steps. That is,
-1. **Random Dally**: $v_i := max\{v_i-1,\, 0\}$ with probability $p<1$
+1. **Random Dally**: $v_i := max(v_i-1,\, 0)$ with probability $p<1$
 
 Finally, we extend the one-lane traffic simulation to a two-lane system that supports cautious lane changes. We make the following assumptions regarding the model and driver behavior in making this extension:
 1. Both lanes have a maximum possible speed, in which the maximum speed of the left lane is greater than or equal to the maximum speed of the right lane.
